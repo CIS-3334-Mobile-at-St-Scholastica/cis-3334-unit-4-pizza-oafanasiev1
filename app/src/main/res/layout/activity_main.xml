@@ -16,11 +16,11 @@
         android:layout_height="wrap_content">
 
         <RadioButton
-            android:text="@string/small_pizza"
+            android:id="@+id/radioButtonSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/radioButtonSmall"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:text="@string/small_pizza" />
 
         <RadioButton
             android:text="@string/mediumpizza"

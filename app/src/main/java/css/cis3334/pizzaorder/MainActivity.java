@@ -25,11 +25,19 @@ public class MainActivity extends AppCompatActivity implements updateViewInterfa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // Set up the object reference
+        PizzaOrderInterface pizza;
+        pizza = new PizzaOrder(this);
 
         // Set up our radio buttons
         rbSmall = (RadioButton) findViewById(R.id.radioButtonSmall);
         rbMedium = (RadioButton) findViewById(R.id.radioButtonMedium);
         rbLarge = (RadioButton) findViewById(R.id.radioButtonLarge);
+        rbSmall.setText("Small Pizza: $" + pizza.getPrice(Pizza.pizzaSize.SMALL));
+        rbMedium.setText("Medium Pizza: $" + pizza.getPrice(Pizza.pizzaSize.MEDIUM));
+        rbLarge.setText("Large Pizza: $" + pizza.getPrice(Pizza.pizzaSize.LARGE));
+
+
 
         // Set up the Check Boxes
         chkbxCheese = (CheckBox) findViewById(R.id.checkBoxCheese);
@@ -42,6 +50,11 @@ public class MainActivity extends AppCompatActivity implements updateViewInterfa
         // Set up the Spinner
         spinnerToppings = (Spinner) findViewById(R.id.spinnerToppings);
 
+
+
+
+
+
     }
 
     @Override
@@ -51,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements updateViewInterfa
     }
 
     public void onClickOrder(View view) {
+
         // ****** For the Assignment, students need to add code here to get information from the UI widgets...
 
         String orderDescription = "No orders yet";
