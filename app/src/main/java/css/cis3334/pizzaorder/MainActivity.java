@@ -20,13 +20,15 @@ public class MainActivity extends AppCompatActivity implements updateViewInterfa
     TextView txtStatus;
     TextView txtPizzasOrdered;
     Spinner spinnerToppings;
+    PizzaOrderInterface pizza;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // Set up the object reference
-        PizzaOrderInterface pizza;
+
         pizza = new PizzaOrder(this);
 
         // Set up our radio buttons
@@ -65,9 +67,15 @@ public class MainActivity extends AppCompatActivity implements updateViewInterfa
 
     public void onClickOrder(View view) {
 
+
         // ****** For the Assignment, students need to add code here to get information from the UI widgets...
 
         String orderDescription = "No orders yet";
+        orderDescription = pizza.OrderPizza("Peperoni", "large", false );
+        txtTotal.setText(pizza.getTotalBill().toString());
+
+
+
 
         // ****** For the Practice Activity, students need to call to OrderPizza here
         // ****** For the Assignment, students will modify the order to fit the type of pizza the user selects using the UI widgets
