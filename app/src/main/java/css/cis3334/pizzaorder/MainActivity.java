@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements updateViewInterfa
         // Set up the object reference
 
         pizza = new PizzaOrder(this);
-
+        int a = 2;
         // Set up our radio buttons
         rbSmall = (RadioButton) findViewById(R.id.radioButtonSmall);
         rbMedium = (RadioButton) findViewById(R.id.radioButtonMedium);
@@ -62,23 +62,41 @@ public class MainActivity extends AppCompatActivity implements updateViewInterfa
     @Override
     public void updateOrderStatusInView(String orderStatus) {
 
-        txtStatus.setText("Order Status: " + orderStatus);
+        txtStatus.setText("Order Status: " + orderStatus); //Deliver option is included
     }
 
     public void onClickOrder(View view) {
 
+        pizza.setDelivery(chkbxDelivery.isChecked());
+
+        // The user checks what kind of pizza(Size) they want
+        String size = "medium";
+        Boolean extraCheese = false;
+
+        if (rbSmall.isChecked()){
+            size = "small";
+        }
+        if (rbMedium.isChecked()){
+            size = "medium";
+        }
+        if (rbLarge.isChecked()){
+            size = "large";
+        }
+
+        if (chkbxCheese.isChecked()){
+            extraCheese = true;
+        }
 
         // ****** For the Assignment, students need to add code here to get information from the UI widgets...
 
         String orderDescription = "No orders yet";
-        orderDescription = pizza.OrderPizza("Peperoni", "large", false );
+
+        //Modified so the data is dynamic
+        orderDescription = pizza.OrderPizza(spinnerToppings.getSelectedItem().toString(), size.toString(), extraCheese );
+
         txtTotal.setText(pizza.getTotalBill().toString());
 
 
-
-
-        // ****** For the Practice Activity, students need to call to OrderPizza here
-        // ****** For the Assignment, students will modify the order to fit the type of pizza the user selects using the UI widgets
 
         //display a pop up message for a long period of time
         Toast.makeText(getApplicationContext(), "You have ordered a "+orderDescription , Toast.LENGTH_LONG).show();
